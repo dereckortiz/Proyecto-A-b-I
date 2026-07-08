@@ -1,0 +1,126 @@
+/* =========================================================
+   Para Susan Abigail — keyframes & micro-animaciones
+   ========================================================= */
+
+@keyframes floatUp {
+  0%   { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: .8; }
+  90%  { opacity: .8; }
+  100% { transform: translateY(-110vh) translateX(var(--drift, 40px)) rotate(360deg); opacity: 0; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1);   opacity: .85; }
+  50%      { transform: scale(1.12); opacity: 1; }
+}
+
+@keyframes wordIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  to { background-position: 200% center; }
+}
+
+@keyframes scrollDot {
+  0%   { top: 6px; opacity: 1; }
+  70%  { top: 18px; opacity: 0; }
+  100% { top: 6px; opacity: 0; }
+}
+
+@keyframes floatSide {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50%      { transform: translateY(-14px) rotate(4deg); }
+}
+
+@keyframes shineMove {
+  from { left: -60%; }
+  to   { left: 130%; }
+}
+
+/* ---- Equalizer (Soda Stereo) ---- */
+.equalizer { display: flex; gap: 4px; justify-content: center; height: 26px; margin-top: 1rem; align-items: flex-end; }
+.equalizer i {
+  width: 5px; border-radius: 3px;
+  background: var(--blue-d);
+  animation: eq 1s ease-in-out infinite;
+}
+.equalizer i:nth-child(1){ animation-delay:0s; }
+.equalizer i:nth-child(2){ animation-delay:.2s; }
+.equalizer i:nth-child(3){ animation-delay:.4s; }
+.equalizer i:nth-child(4){ animation-delay:.1s; }
+.equalizer i:nth-child(5){ animation-delay:.3s; }
+@keyframes eq {
+  0%,100% { height: 6px; }
+  50%     { height: 24px; }
+}
+
+/* ---- Notas musicales (Morat) ---- */
+.notes { margin-top: 1rem; height: 24px; position: relative; }
+.notes span {
+  position: absolute; left: 50%;
+  color: var(--green-d); font-size: 1.3rem;
+  animation: noteFloat 2.4s ease-in-out infinite;
+}
+.notes span:nth-child(1){ animation-delay: 0s;   margin-left:-24px; }
+.notes span:nth-child(2){ animation-delay: .8s;  margin-left:0; }
+.notes span:nth-child(3){ animation-delay: 1.6s; margin-left:22px; }
+@keyframes noteFloat {
+  0%   { transform: translateY(10px); opacity: 0; }
+  30%  { opacity: 1; }
+  100% { transform: translateY(-22px); opacity: 0; }
+}
+
+/* ---- Brillos (Michael Jackson) ---- */
+.sparkle {
+  margin-top: 1rem;
+  letter-spacing: 6px;
+  color: #d9b8ff;
+  animation: twinkle 1.4s ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%,100% { opacity: .4; transform: scale(.95); }
+  50%     { opacity: 1;  transform: scale(1.08); }
+}
+
+/* ---- Onda (Adele) ---- */
+.wave { display: flex; gap: 8px; justify-content: center; margin-top: 1rem; }
+.wave i {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--pink-d);
+  animation: bounceDot 1.2s ease-in-out infinite;
+}
+.wave i:nth-child(2){ animation-delay: .2s; }
+.wave i:nth-child(3){ animation-delay: .4s; }
+@keyframes bounceDot {
+  0%,100% { transform: translateY(0); opacity:.6; }
+  50%     { transform: translateY(-12px); opacity:1; }
+}
+
+/* ---- Fresas (lluvia) ---- */
+.berry-rain { margin-top: 1rem; letter-spacing: 10px; }
+.berry-rain { animation: none; }
+.love-card[data-theme="fresas"]:hover .berry-rain span,
+.berry-rain { display: inline-block; }
+.love-card[data-theme="fresas"]:hover { }
+
+/* ---- Inu (chihuahua) ---- */
+.inu-icon { display: inline-block; }
+.inu { display: inline-block; animation: wiggle 1.4s ease-in-out infinite; transform-origin: bottom center; }
+@keyframes wiggle {
+  0%,100% { transform: rotate(-6deg); }
+  50%     { transform: rotate(6deg) translateY(-4px); }
+}
+.paws { margin-top: 1rem; letter-spacing: 6px; opacity: .8; animation: twinkle 2s ease-in-out infinite; }
+
+/* ---- Corazones que suben desde el botón ---- */
+.pop-heart {
+  position: absolute;
+  font-size: 1.4rem;
+  pointer-events: none;
+  animation: popUp 1.4s ease-out forwards;
+}
+@keyframes popUp {
+  0%   { transform: translateY(0) scale(.6); opacity: 1; }
+  100% { transform: translateY(-160px) translateX(var(--x,0)) scale(1.3); opacity: 0; }
+}
