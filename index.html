@@ -1,151 +1,113 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Para Susan Abigail 💚</title>
-<meta name="description" content="Un pequeño rincón hecho con cariño solo para Susan Abigail Lacayo." />
+<title>Para Susan Abigail</title>
+<meta name="description" content="Un rincón hecho con cariño para Susan Abigail Lacayo." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Dancing+Script:wght@600;700&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Dancing+Script:wght@500;600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/css/styles.css" />
 <link rel="stylesheet" href="assets/css/animations.css" />
 
-<!-- Capa de partículas flotantes (corazones, fresas, notas) -->
-<div class="particles" id="particles" aria-hidden="true"></div>
+<!-- ====== Portada de entrada (para poder iniciar la música) ====== -->
+<div class="intro" id="intro">
+  <div class="intro__inner">
+    <p class="intro__pre">un pequeño lugar hecho para</p>
+    <h1 class="intro__name">Susan Abigail</h1>
+    <button class="intro__btn" id="enterBtn" type="button">entrar</button>
+    <p class="intro__hint">con música y cariño</p>
+  </div>
+</div>
 
-<!-- ============ HERO ============ -->
-<header class="hero" id="hero">
-  <div class="hero__glow"></div>
+<!-- ====== Fondos suaves animados ====== -->
+<div class="blobs" aria-hidden="true">
+  <span class="blob blob--green"></span>
+  <span class="blob blob--pink"></span>
+  <span class="blob blob--blue"></span>
+</div>
+<div class="petals" id="petals" aria-hidden="true"></div>
+
+<!-- ====== HERO ====== -->
+<header class="hero">
   <div class="hero__content">
-    <p class="hero__hi reveal">hola, esto es para ti</p>
+    <p class="hero__pre reveal">para ti,</p>
     <h1 class="hero__name">
-      <span class="word" style="--d:0">Susan</span>
-      <span class="word" style="--d:1">Abigail</span>
-      <span class="word hero__last" style="--d:2">Lacayo</span>
+      <span class="hero__first reveal" style="--rd:.15s">Susan Abigail</span>
+      <span class="hero__last reveal" style="--rd:.45s">Lacayo</span>
     </h1>
-    <p class="hero__tag reveal" style="--rd:.6s">
-      expresiva &middot; sentimental &middot; brillante &middot; hermosa
-    </p>
-    <div class="hero__scroll" aria-hidden="true">
-      <span></span>
-      <small>desliza con cariño</small>
-    </div>
+    <div class="hero__rule reveal" style="--rd:.7s"></div>
+    <p class="hero__sub reveal" style="--rd:.9s">expresiva &middot; sentimental &middot; luminosa</p>
   </div>
-  <div class="hero__hearts" aria-hidden="true">
-    <span>♥</span><span>♥</span><span>♥</span>
-  </div>
+  <div class="hero__scroll" aria-hidden="true"><span></span></div>
 </header>
 
-<!-- ============ FOTOS ============ -->
-<section class="photos" id="fotos">
-  <h2 class="section-title reveal">Tú, en el tiempo</h2>
-  <p class="section-sub reveal">la misma mirada dulce de siempre ✨</p>
+<!-- ====== CARTA CON FOTOS A LOS LADOS ====== -->
+<main class="letter-wrap">
+  <figure class="side-photo side-photo--left reveal">
+    <div class="frame">
+      <img src="assets/img/susan-bebe.jpg" alt="Susan Abigail de pequeña" loading="lazy"
+           onerror="this.closest('.frame').classList.add('is-empty')" />
+      <div class="frame__fallback"><span>susan-bebe.jpg</span></div>
+    </div>
+    <figcaption>la niña que soñaba</figcaption>
+  </figure>
 
-  <div class="photos__grid">
-    <figure class="polaroid reveal" style="--rot:-5deg">
-      <div class="polaroid__img">
-        <img src="assets/img/susan-bebe.jpg" alt="Susan Abigail de pequeña" loading="lazy"
-             onerror="this.closest('.polaroid').classList.add('is-empty')" />
-        <div class="polaroid__fallback">📷<span>coloca aquí<br/>susan-bebe.jpg</span></div>
-        <div class="shine"></div>
-      </div>
-      <figcaption>chiquita &amp; soñadora</figcaption>
-    </figure>
+  <article class="letter">
+    <div class="letter__top" aria-hidden="true"></div>
+    <h2 class="letter__title reveal">Querida Abi</h2>
 
-    <figure class="polaroid reveal" style="--rot:4deg">
-      <div class="polaroid__img">
-        <img src="assets/img/susan-nina.jpg" alt="Susan Abigail de niña" loading="lazy"
-             onerror="this.closest('.polaroid').classList.add('is-empty')" />
-        <div class="polaroid__fallback">📷<span>coloca aquí<br/>susan-nina.jpg</span></div>
-        <div class="shine"></div>
-      </div>
-      <figcaption>esa sonrisa que ilumina</figcaption>
-    </figure>
-  </div>
-</section>
+    <p class="line reveal">Hay personas que pasan por la vida sin dejar huella,</p>
+    <p class="line reveal">y luego estás tú: imposible de olvidar.</p>
 
-<!-- ============ LO QUE AMAS ============ -->
-<section class="loves" id="gustos">
-  <h2 class="section-title reveal">Las cosas que te hacen vibrar</h2>
+    <p class="line reveal">Eres una mujer profundamente capaz e inteligente,</p>
+    <p class="line reveal">de esas que entienden el mundo con la mente y con el alma.</p>
+    <p class="line reveal">Piensas hondo, sientes fuerte y amas con todo,</p>
+    <p class="line reveal">y esa forma tuya de vivir cada emoción sin miedo</p>
+    <p class="line reveal">es justo lo que te hace tan valiente y tan hermosa.</p>
 
-  <div class="loves__grid">
-    <article class="love-card reveal" data-theme="soda" style="--i:0">
-      <div class="love-card__icon">🎸</div>
-      <h3>Soda Stereo</h3>
-      <p>«De música ligera» y todo el aire que respira el alma.</p>
-      <div class="equalizer" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-    </article>
+    <p class="line reveal">Sé que hubo días grises, un pasado que a veces pesó,</p>
+    <p class="line reveal">noches en las que seguir adelante parecía demasiado.</p>
+    <p class="line reveal">Pero mírate ahora: no solo lo lograste,</p>
+    <p class="line reveal">te levantaste con más ternura y con más fuerza.</p>
+    <p class="line reveal">Convertiste cada herida en raíz y cada lágrima en luz.</p>
 
-    <article class="love-card reveal" data-theme="morat" style="--i:1">
-      <div class="love-card__icon">🎶</div>
-      <h3>Morat</h3>
-      <p>Guitarras que cuentan historias como las tuyas.</p>
-      <div class="notes" aria-hidden="true"><span>♪</span><span>♫</span><span>♪</span></div>
-    </article>
+    <p class="line reveal">Y lo más bonito es lo que provocas en los demás:</p>
+    <p class="line reveal">llenas de energía y de calor a quienes te rodean,</p>
+    <p class="line reveal">a los que tienen la suerte de estar cerca de ti.</p>
+    <p class="line reveal">Contigo el mundo se siente un poco más cálido,</p>
+    <p class="line reveal">un poco más humano, un poco más en casa.</p>
 
-    <article class="love-card reveal" data-theme="mj" style="--i:2">
-      <div class="love-card__icon">🕺</div>
-      <h3>Michael Jackson</h3>
-      <p>El Rey del Pop y ese brillo que no se apaga jamás.</p>
-      <div class="sparkle" aria-hidden="true">✦ ✧ ✦</div>
-    </article>
+    <p class="line reveal">Así que hoy quiero que lo tengas presente:</p>
+    <p class="line reveal">eres inteligente, eres fuerte, eres luz,</p>
+    <p class="line reveal">y todo lo bueno que sueñas también es capaz de alcanzarte a ti.</p>
 
-    <article class="love-card reveal" data-theme="adele" style="--i:3">
-      <div class="love-card__icon">🎤</div>
-      <h3>Adele</h3>
-      <p>Voz de terciopelo para los días de corazón abierto.</p>
-      <div class="wave" aria-hidden="true"><i></i><i></i><i></i></div>
-    </article>
+    <p class="line reveal">Gracias por ser exactamente quien eres.</p>
 
-    <article class="love-card reveal" data-theme="fresas" style="--i:4">
-      <div class="love-card__icon">🍓</div>
-      <h3>Las fresas</h3>
-      <p>Dulces, rojas y perfectas… igual que tu ternura.</p>
-      <div class="berry-rain" aria-hidden="true">🍓🍓🍓</div>
-    </article>
+    <p class="letter__close reveal">recuérdalo,<br /><span>corazón de melón</span></p>
+    <div class="letter__bottom" aria-hidden="true"></div>
+  </article>
 
-    <article class="love-card love-card--inu reveal" data-theme="inu" style="--i:5">
-      <div class="love-card__icon inu-icon">
-        <span class="inu">🐶</span>
-      </div>
-      <h3>Inu</h3>
-      <p>Tu chihuahua café, pura compañía y amor incondicional.</p>
-      <div class="paws" aria-hidden="true">🐾 🐾 🐾</div>
-    </article>
-  </div>
-</section>
+  <figure class="side-photo side-photo--right reveal">
+    <div class="frame">
+      <img src="assets/img/susan-nina.jpg" alt="Susan Abigail de niña" loading="lazy"
+           onerror="this.closest('.frame').classList.add('is-empty')" />
+      <div class="frame__fallback"><span>susan-nina.jpg</span></div>
+    </div>
+    <figcaption>la sonrisa que ilumina</figcaption>
+  </figure>
+</main>
 
-<!-- ============ MENSAJE ============ -->
-<section class="message" id="mensaje">
-  <div class="message__card reveal">
-    <div class="message__deco" aria-hidden="true">💌</div>
-    <h2>Para ti, Abi</h2>
-    <p class="message__lead">
-      Eres una mujer <strong>capaz, inteligente y valiente</strong>.
-    </p>
-    <p>
-      A pesar de un pasado que a veces pesó y de días que fueron grises,
-      elegiste seguir adelante con el corazón en alto. No solo saliste
-      adelante: te convertiste en luz.
-    </p>
-    <p>
-      Tu energía llena de calidez a quienes tienen la suerte de estar cerca
-      de ti. Sientes profundo, amas fuerte y transformas cada emoción en
-      fuerza. Eso, Susan, es algo raro y hermoso.
-    </p>
-    <p class="message__close">
-      Gracias por ser exactamente quien eres. El mundo brilla un poco más
-      contigo en él. 💚🌸💙
-    </p>
-    <div class="signature">con todo el cariño ♥</div>
-  </div>
-</section>
-
-<!-- ============ FINAL ============ -->
 <footer class="footer">
-  <p class="footer__line">Hecho con muchísimo cariño, solo para <span>Susan Abigail</span> &amp; Inu 🐾</p>
-  <button class="heart-btn" id="heartBtn" type="button" aria-label="Enviar amor">
-    dame amor ♥
-  </button>
-  <div class="footer__burst" id="burst" aria-hidden="true"></div>
+  <div class="footer__rule" aria-hidden="true"></div>
+  <p>hecho con todo el cariño, solo para ti</p>
 </footer>
+
+<!-- ====== Reproductor de música ====== -->
+<audio id="song" loop preload="auto">
+  <source src="assets/audio/antidoto-y-veneno.mp3" type="audio/mpeg" />
+</audio>
+<button class="music-toggle is-off" id="musicToggle" type="button" aria-label="Reproducir música">
+  <span class="music-toggle__bars"><i></i><i></i><i></i></span>
+  <span class="music-toggle__label">Antídoto y Veneno &middot; Eddie Santiago</span>
+</button>
 
 <script src="assets/js/main.js"></script>

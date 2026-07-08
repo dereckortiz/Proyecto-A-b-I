@@ -1,0 +1,13 @@
+MUSICA DE FONDO
+================
+
+Coloca aquí el archivo de la canción con EXACTAMENTE este nombre:
+
+  antidoto-y-veneno.mp3   ->  "Antídoto y Veneno" - Eddie Santiago
+
+Debe ser .mp3. Al abrir la página y presionar "entrar", la canción
+empieza a sonar sola. El botón de abajo a la derecha la pausa o la
+reanuda cuando quieras.
+
+Nota: por derechos de autor, el archivo de la canción no viene incluido;
+solo hay que agregarlo aquí con ese nombre.
