@@ -1,8 +1,3 @@
-/* =========================================================
-   Una carta para Abi — interacciones
-   ========================================================= */
-
-/* --- Brasas / chispas de fuego que suben --- */
 (function embers() {
   const layer = document.getElementById('embers');
   if (!layer) return;
@@ -22,9 +17,6 @@
   }
 })();
 
-/* --- Aparición de la carta al hacer scroll ---
-   Scroll + comprobación inicial (fiable en todos los navegadores),
-   con una red de seguridad que revela todo pase lo que pase. --- */
 (function reveal() {
   const items = [...document.querySelectorAll('.reveal')];
 
@@ -49,7 +41,6 @@
   window.__revealCheck = check;
 })();
 
-/* --- Apertura: romper el lacre, chispas y consumir la hoja --- */
 (function openLetter() {
   const scene  = document.getElementById('scene');
   const closed = document.getElementById('closed');
@@ -91,8 +82,8 @@
       return;
     }
 
-    closed.classList.add('is-opening');   // lacre se rompe + hoja se consume
-    sparks();                             // chispas de fuego
+    closed.classList.add('is-opening');
+    sparks();
 
     setTimeout(() => {
       scene.classList.add('is-hidden');
