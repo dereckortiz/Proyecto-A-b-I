@@ -1,89 +1,106 @@
 /* =========================================================
-   Para Susan Abigail — interacciones
+   Una carta para Abi — interacciones
    ========================================================= */
 
-/* --- Pétalos que caen (colores pastel, sin emojis) --- */
-(function petals() {
-  const layer = document.getElementById('petals');
+/* --- Brasas / chispas de fuego que suben --- */
+(function embers() {
+  const layer = document.getElementById('embers');
   if (!layer) return;
-  const colors = ['#ffd6e0', '#c3e8d0', '#c6dcf2', '#f0a7bd', '#e6d5f2'];
-  const total = window.matchMedia('(max-width: 640px)').matches ? 16 : 30;
+  const total = window.matchMedia('(max-width: 640px)').matches ? 22 : 40;
 
   for (let i = 0; i < total; i++) {
-    const p = document.createElement('i');
-    p.style.left = Math.random() * 100 + 'vw';
-    const size = 8 + Math.random() * 12;
-    p.style.width = size + 'px';
-    p.style.height = size + 'px';
-    p.style.background = colors[Math.floor(Math.random() * colors.length)];
-    p.style.setProperty('--drift', (Math.random() * 120 - 60) + 'px');
-    const dur = 12 + Math.random() * 14;
-    p.style.animationDuration = dur + 's';
-    p.style.animationDelay = -(Math.random() * dur) + 's';
-    p.style.opacity = (0.35 + Math.random() * 0.35).toFixed(2);
-    layer.appendChild(p);
+    const e = document.createElement('i');
+    e.style.left = Math.random() * 100 + 'vw';
+    const size = 2 + Math.random() * 4;
+    e.style.width = size + 'px';
+    e.style.height = size + 'px';
+    e.style.setProperty('--drift', (Math.random() * 140 - 70) + 'px');
+    const dur = 9 + Math.random() * 11;
+    e.style.animationDuration = dur + 's';
+    e.style.animationDelay = -(Math.random() * dur) + 's';
+    layer.appendChild(e);
   }
 })();
 
-/* --- Reveal al hacer scroll (líneas de la carta con stagger) --- */
+/* --- Aparición de la carta al hacer scroll ---
+   Scroll + comprobación inicial (fiable en todos los navegadores),
+   con una red de seguridad que revela todo pase lo que pase. --- */
 (function reveal() {
-  const items = document.querySelectorAll('.reveal');
-  if (!('IntersectionObserver' in window)) {
-    items.forEach(el => el.classList.add('is-visible'));
-    return;
-  }
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('is-visible');
-        io.unobserve(e.target);
+  const items = [...document.querySelectorAll('.reveal')];
+
+  document.querySelectorAll('.parchment .reveal').forEach((el, i) => {
+    el.style.setProperty('--rd', Math.min(i * 0.08, 0.6) + 's');
+  });
+
+  function check() {
+    const trigger = window.innerHeight * 0.9;
+    for (let i = items.length - 1; i >= 0; i--) {
+      if (items[i].getBoundingClientRect().top < trigger) {
+        items[i].classList.add('is-visible');
+        items.splice(i, 1);
       }
-    });
-  }, { threshold: 0.2 });
+    }
+  }
 
-  // Stagger suave a las líneas de la carta
-  const lines = document.querySelectorAll('.letter .line, .letter__close');
-  lines.forEach((el, i) => { el.style.setProperty('--rd', (i * 0.12) + 's'); });
-
-  items.forEach(el => io.observe(el));
+  check();
+  window.addEventListener('scroll', check, { passive: true });
+  window.addEventListener('resize', check);
+  setTimeout(() => document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible')), 4500);
+  window.__revealCheck = check;
 })();
 
-/* --- Música: Antídoto y Veneno (Eddie Santiago) --- */
-(function music() {
-  const song = document.getElementById('song');
-  const toggle = document.getElementById('musicToggle');
-  const intro = document.getElementById('intro');
-  const enter = document.getElementById('enterBtn');
-  if (!song || !toggle) return;
+/* --- Apertura: romper el lacre, chispas y consumir la hoja --- */
+(function openLetter() {
+  const scene  = document.getElementById('scene');
+  const closed = document.getElementById('closed');
+  const seal   = document.getElementById('seal');
+  const page   = document.getElementById('page');
+  if (!scene || !closed || !seal) return;
 
-  song.volume = 0.65;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.body.style.overflow = 'hidden';
 
-  function play() {
-    song.play().then(() => {
-      toggle.classList.remove('is-off');
-      toggle.setAttribute('aria-label', 'Pausar música');
-    }).catch(() => {
-      toggle.classList.add('is-off');
-    });
+  function sparks() {
+    const r = seal.getBoundingClientRect();
+    const cx = r.left + r.width / 2;
+    const cy = r.top + r.height / 2;
+    for (let i = 0; i < 26; i++) {
+      const s = document.createElement('span');
+      s.className = 'spark';
+      s.style.left = cx + 'px';
+      s.style.top = cy + 'px';
+      const ang = Math.random() * Math.PI * 2;
+      const dist = 60 + Math.random() * 150;
+      s.style.setProperty('--sx', Math.cos(ang) * dist + 'px');
+      s.style.setProperty('--sy', (Math.sin(ang) * dist - 40) + 'px');
+      s.style.animationDelay = (Math.random() * 0.15) + 's';
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 1100);
+    }
   }
-  function pause() {
-    song.pause();
-    toggle.classList.add('is-off');
-    toggle.setAttribute('aria-label', 'Reproducir música');
-  }
 
-  // Al entrar desde la portada: arranca la música y revela la página
-  if (enter && intro) {
-    enter.addEventListener('click', () => {
-      intro.classList.add('is-hidden');
+  let opened = false;
+  function open() {
+    if (opened) return;
+    opened = true;
+
+    if (reduce) {
+      scene.classList.add('is-hidden');
       document.body.style.overflow = '';
-      play();
-    });
-    // Bloquea el scroll mientras la portada está visible
-    document.body.style.overflow = 'hidden';
+      if (typeof window.__revealCheck === 'function') window.__revealCheck();
+      return;
+    }
+
+    closed.classList.add('is-opening');   // lacre se rompe + hoja se consume
+    sparks();                             // chispas de fuego
+
+    setTimeout(() => {
+      scene.classList.add('is-hidden');
+      document.body.style.overflow = '';
+      if (page) page.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (typeof window.__revealCheck === 'function') window.__revealCheck();
+    }, 1150);
   }
 
-  toggle.addEventListener('click', () => {
-    if (song.paused) play(); else pause();
-  });
+  seal.addEventListener('click', open);
 })();

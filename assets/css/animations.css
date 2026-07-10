@@ -1,46 +1,60 @@
 /* =========================================================
-   Para Susan Abigail — keyframes
+   Una carta para Abi — keyframes (fuego y apertura)
    ========================================================= */
 
-@keyframes drift1 {
-  0%,100% { transform: translate(0,0) scale(1); }
-  50%     { transform: translate(6vw, 5vh) scale(1.12); }
-}
-@keyframes drift2 {
-  0%,100% { transform: translate(0,0) scale(1); }
-  50%     { transform: translate(-7vw, -4vh) scale(1.15); }
-}
-@keyframes drift3 {
-  0%,100% { transform: translate(-50%,-50%) scale(1); }
-  50%     { transform: translate(-42%,-58%) scale(1.1); }
+/* Brasas que suben */
+@keyframes emberRise {
+  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  12%  { opacity: 1; }
+  85%  { opacity: .7; }
+  100% { transform: translateY(-110vh) translateX(var(--drift, 30px)) scale(.35); opacity: 0; }
 }
 
-@keyframes petalFall {
-  0%   { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
-  10%  { opacity: .6; }
-  90%  { opacity: .6; }
-  100% { transform: translateY(108vh) translateX(var(--drift, 40px)) rotate(420deg); opacity: 0; }
+/* Resplandor del fuego (parpadeo cálido) */
+@keyframes fireGlow {
+  0%,100% { opacity: .75; transform: scale(1); }
+  25%     { opacity: 1;   transform: scale(1.03); }
+  50%     { opacity: .68; transform: scale(.99); }
+  75%     { opacity: .92; transform: scale(1.02); }
 }
 
-@keyframes scrollDot {
-  0%   { top: 6px; opacity: 1; }
-  70%  { top: 18px; opacity: 0; }
-  100% { top: 6px; opacity: 0; }
+/* El lacre respira */
+@keyframes sealBreathe {
+  0%,100% { box-shadow: 0 6px 16px rgba(0,0,0,.5), inset 0 2px 6px rgba(255,255,255,.28), inset 0 -6px 10px rgba(0,0,0,.4), 0 0 0 rgba(255,150,60,0); }
+  50%     { box-shadow: 0 6px 16px rgba(0,0,0,.5), inset 0 2px 6px rgba(255,255,255,.28), inset 0 -6px 10px rgba(0,0,0,.4), 0 0 28px rgba(255,150,60,.5); }
 }
 
-@keyframes floatY {
-  0%,100% { transform: translateY(0); }
-  50%     { transform: translateY(-12px); }
+/* El lacre se rompe y cae */
+@keyframes sealBreak {
+  0%   { transform: scale(1) rotate(0deg); opacity: 1; }
+  22%  { transform: scale(1.14) rotate(-6deg); }
+  40%  { transform: scale(1.05) translateY(-6px) rotate(7deg); opacity: 1; }
+  100% { transform: scale(.65) translateY(160px) rotate(46deg); opacity: 0; }
 }
 
-@keyframes eq {
-  0%,100% { height: 40%; }
-  50%     { height: 100%; }
+/* Destello de fuego al abrir */
+@keyframes flareBurst {
+  0%   { opacity: 0; transform: scale(.2); }
+  30%  { opacity: 1; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(3.6); }
 }
 
-@keyframes heartBeat {
-  0%,100% { transform: scale(1); }
-  25%     { transform: scale(1.25); }
-  40%     { transform: scale(1.05); }
-  60%     { transform: scale(1.2); }
+/* La hoja cerrada se aviva y se consume al abrir */
+@keyframes paperBurn {
+  0%   { filter: url(#burn-edge-sm) brightness(1); transform: scale(1); opacity: 1; }
+  35%  { filter: url(#burn-edge-sm) brightness(1.5) sepia(.4); }
+  70%  { filter: url(#burn-edge-sm) brightness(2) sepia(.7); opacity: .85; }
+  100% { filter: url(#burn-edge-sm) brightness(3); transform: scale(1.08); opacity: 0; }
+}
+
+/* Chispas que saltan */
+@keyframes sparkFly {
+  0%   { transform: translate(0,0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--sx,0), var(--sy,0)) scale(0); opacity: 0; }
+}
+
+/* Pista que parpadea */
+@keyframes hintPulse {
+  0%,100% { opacity: .5; }
+  50%     { opacity: 1; }
 }

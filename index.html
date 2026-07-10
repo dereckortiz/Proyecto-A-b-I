@@ -1,111 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Para Abi</title>
-<meta name="description" content="Un rincón hecho con cariño para Abi." />
+<title>Una carta para Abi</title>
+<meta name="description" content="Una carta escrita a mano, solo para Abi." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Dancing+Script:wght@500;600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/css/styles.css" />
 <link rel="stylesheet" href="assets/css/animations.css" />
+</head>
+<body>
 
-<!-- ====== Portada de entrada (para poder iniciar la música) ====== -->
-<div class="intro" id="intro">
-  <div class="intro__inner">
-    <p class="intro__pre">un pequeño lugar hecho para</p>
-    <h1 class="intro__name">Abi <span class="intro__heart">&#9829;</span></h1>
-    <button class="intro__btn" id="enterBtn" type="button">entrar</button>
-    <p class="intro__hint">con música y cariño</p>
-  </div>
-</div>
+<!-- ====== Filtros SVG: bordes rasgados y quemados ====== -->
+<svg class="svg-defs" aria-hidden="true" width="0" height="0" focusable="false">
+  <defs>
+    <filter id="burn-edge" x="-12%" y="-12%" width="124%" height="124%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.013" numOctaves="4" seed="11" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="30" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <filter id="burn-edge-sm" x="-14%" y="-14%" width="128%" height="128%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="4" seed="4" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="18" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+</svg>
 
-<!-- ====== Fondos suaves animados ====== -->
-<div class="blobs" aria-hidden="true">
-  <span class="blob blob--green"></span>
-  <span class="blob blob--pink"></span>
-  <span class="blob blob--blue"></span>
-</div>
-<div class="petals" id="petals" aria-hidden="true"></div>
+<!-- ====== Ambiente de fuego ====== -->
+<div class="firelight" aria-hidden="true"></div>
+<div class="embers" id="embers" aria-hidden="true"></div>
 
-<!-- ====== HERO ====== -->
-<header class="hero">
-  <div class="hero__content">
-    <p class="hero__pre reveal">para ti,</p>
-    <h1 class="hero__name">
-      <span class="hero__first reveal" style="--rd:.15s">Abi</span>
-    </h1>
-    <div class="hero__rule reveal" style="--rd:.7s"></div>
-    <p class="hero__sub reveal" style="--rd:.9s">expresiva &middot; sentimental &middot; luminosa</p>
-  </div>
-  <div class="hero__scroll" aria-hidden="true"><span></span></div>
-</header>
+<!-- ====== ESCENA: carta lacrada que se abre ====== -->
+<div class="scene" id="scene">
+  <div class="scene__inner">
+    <p class="scene__pre">una carta lacrada, para</p>
+    <h1 class="scene__name">Abi</h1>
 
-<!-- ====== CARTA CON FOTOS A LOS LADOS ====== -->
-<main class="letter-wrap">
-  <figure class="side-photo side-photo--left reveal">
-    <div class="frame">
-      <img src="assets/img/susan-bebe.jpg" alt="Susan Abigail de pequeña" loading="lazy"
-           onerror="this.closest('.frame').classList.add('is-empty')" />
-      <div class="frame__fallback"><span>susan-bebe.jpg</span></div>
+    <div class="closed" id="closed">
+      <div class="closed__glow" aria-hidden="true"></div>
+      <div class="closed__sheet" aria-hidden="true"></div>
+      <div class="flare" aria-hidden="true"></div>
+      <button class="seal" id="seal" type="button" aria-label="Abrir la carta">
+        <span class="seal__ring"></span>
+        <span class="seal__heart">&#9829;</span>
+      </button>
     </div>
-    <figcaption>la niña que soñaba</figcaption>
-  </figure>
 
-  <article class="letter">
-    <div class="letter__top" aria-hidden="true"></div>
-    <h2 class="letter__title reveal">Para la mujer más bella del lugar</h2>
+    <p class="scene__hint">toca el lacre para abrir</p>
+  </div>
+</div>
 
-    <p class="line reveal">Hay una personita que hace que todo se sienta más bonito,</p>
-    <p class="line reveal">y resulta que esa personita eres tú.</p>
+<!-- ====== LA CARTA (pergamino quemado) ====== -->
+<main class="page" id="page">
+  <article class="parchment">
+    <div class="parchment__glow" aria-hidden="true"></div>
+    <div class="parchment__sheet" aria-hidden="true"></div>
 
-    <p class="line reveal">Eres chiquita, sí, pero con un corazón enorme,</p>
-    <p class="line reveal">de esos que abrazan con la mirada y curan con la sonrisa.</p>
-    <p class="line reveal">Eres capaz, eres inteligente, eres valiente,</p>
-    <p class="line reveal">y sientes tan bonito y tan hondo cada cosa</p>
-    <p class="line reveal">que estar cerca de ti se siente como estar en casa.</p>
+    <div class="parchment__body">
+      <p class="parchment__place reveal">Un día cualquiera &mdash; que contigo no lo es</p>
+      <h2 class="parchment__salute reveal">Abi,</h2>
 
-    <p class="line reveal">Sé que la vida a veces te lastimó,</p>
-    <p class="line reveal">que hubo días grises y noches muy largas.</p>
-    <p class="line reveal">Pero mírate: te levantaste una y otra vez,</p>
-    <p class="line reveal">y cada vez volviste más dulce, más fuerte, más tú.</p>
-    <p class="line reveal">Convertiste cada herida en raíz y cada lágrima en luz.</p>
+      <p class="para reveal">
+        Te escribo sin apuro, que es como se dicen las cosas que importan.
+        No traigo palabras grandes ni promesas de esas que suenan bonito
+        y no pesan nada. Traigo lo que tengo, que es sencillo y es cierto:
+        me gustas.
+      </p>
 
-    <p class="line reveal">Llenas de calorcito a quienes tienen la suerte de tenerte,</p>
-    <p class="line reveal">y contigo hasta los días feos se ponen suavecitos.</p>
-    <p class="line reveal">Eres profundamente querida, más de lo que imaginas,</p>
-    <p class="line reveal">y mereces todo lo bonito de este mundo, y un poquito más.</p>
+      <p class="para reveal">
+        Me gustas en presente, sin adornos. Me gusta tu forma de mirar el mundo,
+        de reírte fuerte, de tomarte en serio las cosas pequeñas. Me gusta que
+        seas de las que sienten hondo, aunque a veces eso duela, porque quien
+        siente así también quiere de verdad.
+      </p>
 
-    <p class="line line--soft reveal">Y recuerda una cosa, mi niña:</p>
-    <p class="line line--highlight reveal">estos ojitos lastimados solo les gusta verte a ti.</p>
+      <p class="para reveal">
+        No somos nada todavía, y por eso mismo prefiero ser honesto. Prefiero
+        decírtelo yo, antes de que se me quede guardado. Uno se arrepiente más
+        de lo que calla que de lo que dice.
+      </p>
 
-    <p class="line reveal">Así que cuídate mucho, sonríe bastante,</p>
-    <p class="line reveal">y no olvides nunca lo valiosa y lo hermosa que eres.</p>
+      <p class="para para--center reveal">
+        No te pido una respuesta hoy.<br />
+        No te pido que corras ni que decidas nada.
+      </p>
 
-    <p class="letter__close reveal">recuérdalo,<br /><span>corazón de melón</span></p>
-    <div class="letter__bottom" aria-hidden="true"></div>
+      <p class="para reveal">
+        Solo quería que lo supieras: que existe alguien para quien tu nombre
+        no es un nombre cualquiera. Si algún día te provoca caminar hacia aquí,
+        aquí voy a estar, sin prisa y sin reclamos. Y si no, me quedo igual con
+        la suerte de conocerte.
+      </p>
+
+      <p class="para reveal">
+        Cuídate. Ríete mucho. Y no dudes ni un segundo de lo que vales.
+      </p>
+
+      <p class="sign reveal">
+        Tuyo, despacio,
+        <span class="sign__name">para que dure</span>
+      </p>
+
+      <p class="ps reveal">
+        P.D. &mdash; No hace falta que respondas esta carta.
+        Con que la leas hasta el final, ya me diste bastante.
+      </p>
+    </div>
   </article>
-
-  <figure class="side-photo side-photo--right reveal">
-    <div class="frame">
-      <img src="assets/img/susan-nina.jpg" alt="Susan Abigail de niña" loading="lazy"
-           onerror="this.closest('.frame').classList.add('is-empty')" />
-      <div class="frame__fallback"><span>susan-nina.jpg</span></div>
-    </div>
-    <figcaption>la sonrisa que ilumina</figcaption>
-  </figure>
 </main>
 
-<footer class="footer">
-  <div class="footer__rule" aria-hidden="true"></div>
-  <p>hecho con todo el cariño, solo para ti</p>
-</footer>
-
-<!-- ====== Reproductor de música ====== -->
-<audio id="song" loop preload="auto">
-  <source src="assets/audio/antidoto-y-veneno.mp3" type="audio/mpeg" />
-</audio>
-<button class="music-toggle is-off" id="musicToggle" type="button" aria-label="Reproducir música">
-  <span class="music-toggle__bars"><i></i><i></i><i></i></span>
-  <span class="music-toggle__label">Antídoto y Veneno &middot; Eddie Santiago</span>
-</button>
-
 <script src="assets/js/main.js"></script>
+</body>
+</html>
